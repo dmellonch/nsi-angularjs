@@ -8,12 +8,19 @@
  * Controller of the angularjsCourseApp
  */
 angular.module('angularjsCourseApp')
-  .controller('LoginCtrl', function ($http, $location, baseUrl) {
+  .controller('LoginCtrl', function ($http, $location, baseUrl, $rootScope) {
     var vm = this;
     vm.credentials = {
       username: "admin",
       password: "Password1!"
     }
+
+    $rootScope.doLogout = function doLogout() {
+      $http.post(baseUrl + '/api/Account/Logout', {}).then(function () {
+        $rootScope.Logged = false;
+      })
+    }
+
 
     this.doLogin = function () {
       $http.post(baseUrl + '/api/Account/Login', {
@@ -25,6 +32,7 @@ angular.module('angularjsCourseApp')
           .then(function (res) {
             console.log(res);
             $location.path('/');
+            $rootScope.Logged = true;
           },
           function (err) {
           });
