@@ -17,7 +17,7 @@ angular.module('angularjsCourseApp')
 
 
     function doLogin(){
-      alert('alert');
+
 
     }
   });
