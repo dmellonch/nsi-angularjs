@@ -13,7 +13,7 @@ angular.module('angularjsCourseApp')
     vm.credentials = {
       username: "admin",
       password: "Password1!"
-    }
+    };
 
     this.doLogin = function () {
       var url = 'https://nsi-prenota.azurewebsites.net';
@@ -21,8 +21,14 @@ angular.module('angularjsCourseApp')
         UserName: vm.credentials.username,
         Password: vm.credentials.password,
         IsPersistent: true
-      }).then(function (res) {
+      }).then(function () {
         $location.url('/');
+        $http.get(url + '/api/Stanza', {withCredentials: true})
+          .then(function(res){
+            console.log(res);
+          },
+          function(err){});
+
       }, function (err) {
       })
 
