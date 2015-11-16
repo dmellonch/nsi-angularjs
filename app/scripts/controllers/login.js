@@ -9,9 +9,15 @@
  */
 angular.module('angularjsCourseApp')
   .controller('LoginCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    var vm = this;
+    vm.doLogin = doLogin;
+    vm.userName = 'admin';
+    vm.password = 'Password1!';
+
+
+
+    function doLogin(){
+      alert('alert');
+
+    }
   });
