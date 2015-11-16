@@ -8,7 +8,7 @@
  * Controller of the angularjsCourseApp
  */
 angular.module('angularjsCourseApp')
-  .controller('LoginCtrl', function ($http, $location) {
+  .controller('LoginCtrl', function ($http, $location, baseUrl) {
     var vm = this;
     vm.credentials = {
       username: "admin",
@@ -16,16 +16,15 @@ angular.module('angularjsCourseApp')
     }
 
     this.doLogin = function () {
-      var url = 'https://nsi-prenota-v2.azurewebsites.net';
-      $http.post(url + '/api/Account/Login', {
+      $http.post(baseUrl + '/api/Account/Login', {
         UserName: vm.credentials.username,
         Password: vm.credentials.password,
         IsPersistent: true
       }).then(function () {
-        $http.get(url + '/api/Stanza', {withCredentials: true})
+        $http.get(baseUrl + '/api/Stanza')
           .then(function (res) {
             console.log(res);
-            $location.url('/');
+            $location.path('/');
           },
           function (err) {
           });

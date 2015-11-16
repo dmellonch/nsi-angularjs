@@ -17,6 +17,10 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .value('baseUrl', 'https://nsi-prenota-v2.azurewebsites.net')
+  .config(function ($httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
