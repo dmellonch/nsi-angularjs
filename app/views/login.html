@@ -1,14 +1,22 @@
-<form novalidate name="loginForm">
+<form name="loginForm" novalidate ng-submit="login.doLogin()">
   <h1>LOGIN</h1>
-
-  <p>Username:</p>
-  <input name="username" type="text" ng-model="login.userName"/>
-
-  <p>Password</p>
-  <input name="password" type="password" ng-model="login.password"/>
-
-  <div/>
-  <button type="button" ng-click="login.doLogin()">Login!</button>
-
-
-
+  <div class="form-group">
+    <label>Username:</label>
+    <input name="username"
+           type="text"
+           ng-model="login.credentials.username"
+           class="form-control"
+           required/>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input name="password"
+           type="password"
+           ng-model="login.credentials.password"
+           class="form-control"
+           required/>
+  </div>
+  <button type="submit"
+          class="btn btn-success"
+          ng-disabled="loginForm.$invalid">Login!</button>
+</form>

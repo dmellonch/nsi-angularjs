@@ -8,16 +8,14 @@
  * Controller of the angularjsCourseApp
  */
 angular.module('angularjsCourseApp')
-  .controller('LoginCtrl', function () {
-    var vm = this;
-    vm.doLogin = doLogin;
-    vm.userName = 'admin';
-    vm.password = 'Password1!';
+  .controller('LoginCtrl', function ()
+  {
+    this.credentials = {
+      username : "admin" ,
+      password : "Password1!"}
 
-
-
-    function doLogin(){
-
+    this.doLogin = function()
+    {
 
     }
   });
