@@ -67,8 +67,8 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6741706">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.6149289">
+              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -453,7 +453,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447688346331</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="login  fatto">
+      <created>1447689402192</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1447689402192</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -495,7 +501,8 @@
     <MESSAGE value="prova" />
     <MESSAGE value="login" />
     <MESSAGE value="login  http success" />
-    <option name="LAST_COMMIT_MESSAGE" value="login  http success" />
+    <MESSAGE value="login  fatto" />
+    <option name="LAST_COMMIT_MESSAGE" value="login  fatto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -776,8 +783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6741706">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.6149289">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding />
         </state>
       </provider>

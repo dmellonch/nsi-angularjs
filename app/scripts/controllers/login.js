@@ -22,7 +22,6 @@ angular.module('angularjsCourseApp')
         Password: vm.credentials.password,
         IsPersistent: true
       }).then(function (res) {
-        console.log(res);
         $location.url('/');
       }, function (err) {
       })
