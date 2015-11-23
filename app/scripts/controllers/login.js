@@ -39,10 +39,12 @@ angular.module('angularjsCourseApp')
             });
           },
           function (err) {
+            authService.setAuthenticated(false);
+            alert('errore autenticazione');
           });
       }, function (err) {
+        authService.setAuthenticated(false);
         alert('errore autenticazione');
       })
-
     }
   });

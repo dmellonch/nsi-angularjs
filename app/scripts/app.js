@@ -39,6 +39,11 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .when('/dettaglioStanza/:Id', {
+        templateUrl: 'views/dettagliostanza.html',
+        controller: 'DettaglioStanzaCtrl',
+        controllerAs: 'stanza'
+      })
       .otherwise({
         redirectTo: '/'
       });

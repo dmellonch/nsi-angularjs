@@ -4,9 +4,12 @@
     <file url="file://$PROJECT_DIR$/Gruntfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/ctrlnavbar.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/dettagliostanza.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/login.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/main.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/services/authservice.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/services/roomsservice.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/dettagliostanza.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/login.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/main.html" charset="UTF-8" />
   </component>
