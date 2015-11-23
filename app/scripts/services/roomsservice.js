@@ -13,10 +13,9 @@ angular.module('angularjsCourseApp')
 
     var vm = this;
     vm.GetStanze = GetStanze;
+    vm.GetDisponibilita = GetDisponibilita;
 
     function GetStanze(id) {
-      console.log("Metodo GetStanze");
-
       var currentUrl = '/api/Stanza'
       if(id)
         currentUrl = currentUrl + '/' + id;
@@ -25,5 +24,34 @@ angular.module('angularjsCourseApp')
         .then(function (res) {
           return res.data;
         });
-    }
+    };
+
+    function GetDisponibilita(id, params)
+    {
+      console.log("GetDisponibilita");
+      return $http.get(baseUrl + '/api/Stanza/' + id + '/PeriodiStato', {
+        params: params
+      })
+        .then(function (res) {
+          console.log("elenco impegni:" + res);
+          var result = [];
+
+          res.data.forEach(function (item, index) {
+
+            console.log("ciclo su impegno:" + item);
+            if(item.Stato != "2")
+              result.push({
+                title: item.Stato == "0"
+                  ? "Non Prenotabile"
+                  : "Prenotato",
+                start: item.Inizio,
+                end: (res.data.length - 1 == index
+                  ? params.fine
+                  : res.data[index + 1].Inizio)
+            })
+          })
+
+          return result;
+        });
+    };
   });
