@@ -8,7 +8,7 @@
  * Controller of the angularjsCourseApp
  */
 angular.module('angularjsCourseApp')
-  .controller('LoginCtrl', function ($http, $location, baseUrl, $rootScope) {
+  .controller('LoginCtrl', function ($http, $location, baseUrl, $rootScope, authService) {
     var vm = this;
     vm.credentials = {
       username: "admin",
@@ -17,12 +17,14 @@ angular.module('angularjsCourseApp')
 
     $rootScope.doLogout = function doLogout() {
       $http.post(baseUrl + '/api/Account/Logout', {}).then(function () {
-        $rootScope.Logged = false;
+        //$rootScope.Logged = false;
+        authService.setAuthenticated(false);
+        $location.path('/login');
       })
     }
 
 
-    this.doLogin = function () {
+    $rootScope.doLogin = function () {
       $http.post(baseUrl + '/api/Account/Login', {
         UserName: vm.credentials.username,
         Password: vm.credentials.password,
@@ -30,17 +32,17 @@ angular.module('angularjsCourseApp')
       }).then(function () {
         $http.get(baseUrl + '/api/Stanza')
           .then(function (res) {
-            console.log(res);
-            $location.path('/');
-            $rootScope.Logged = true;
+            //console.log(res);
+            authService.setAuthenticated(true);
+            authService.getUser(function(){
+              $location.path('/');
+            });
           },
           function (err) {
           });
-
       }, function (err) {
         alert('errore autenticazione');
       })
-
 
     }
   });

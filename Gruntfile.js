@@ -118,7 +118,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Make sure there are no obvious mistakes
+    // Make sure ther80e are no obvious mistakes
     jshint: {
       options: {
         jshintrc: '.jshintrc',
