@@ -32,7 +32,7 @@ angular.module('angularjsCourseApp')
         },
         lang: 'it',
         dayClick: function (date, jsEvent, view) {
-          vm.titolo=date.format();
+          vm.titolo = date.format();
           $('#modalBody').html(date.description);
           //$('#eventUrl').attr('href', date.url);
           $('#fullCalModal').modal();
@@ -40,7 +40,7 @@ angular.module('angularjsCourseApp')
       }
     };
 
-    var vm = this;
+    vm.conferma = conferma;
 
     var id = $routeParams.Id;
 
@@ -69,8 +69,20 @@ angular.module('angularjsCourseApp')
         });
     }
 
+    function conferma() {
+      return roomsService.GetDisponibilita({
+          CreatoreId: vm.id,
+          StanzaId: vm.id,
+          Inizio: vm.prenotazione.inizio,
+          Fine: vm.prenotazione.fine
+        }
+      )
+
+
+    }
+
     LoadStanza();
-    //LoadDisponibilita();
+//LoadDisponibilita();
 
   })
 ;
