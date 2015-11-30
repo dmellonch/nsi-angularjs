@@ -17,7 +17,7 @@ angular.module('angularjsCourseApp')
 
     function GetStanze(id) {
       var currentUrl = '/api/Stanza'
-      if(id)
+      if (id)
         currentUrl = currentUrl + '/' + id;
 
       return $http.get(baseUrl + currentUrl)
@@ -26,8 +26,7 @@ angular.module('angularjsCourseApp')
         });
     };
 
-    function GetDisponibilita(id, params)
-    {
+    function GetDisponibilita(id, params) {
       console.log("GetDisponibilita");
       return $http.get(baseUrl + '/api/Stanza/' + id + '/PeriodiStato', {
         params: params
@@ -39,7 +38,7 @@ angular.module('angularjsCourseApp')
           res.data.forEach(function (item, index) {
 
             console.log("ciclo su impegno:" + item);
-            if(item.Stato != "2")
+            if (item.Stato != "2")
               result.push({
                 title: item.Stato == "0"
                   ? "Non Prenotabile"
@@ -48,10 +47,19 @@ angular.module('angularjsCourseApp')
                 end: (res.data.length - 1 == index
                   ? params.fine
                   : res.data[index + 1].Inizio)
-            })
+              })
           })
 
           return result;
         });
     };
+
+    function prenota(params) {
+      return $http.post(baseUrl + '/api/Prenotazione/', {params: params})
+        .then(
+        console.log('fatta')
+      )
+
+    }
+
   });
