@@ -8,7 +8,7 @@
  * Controller of the angularjsCourseApp
  */
 angular.module('angularjsCourseApp')
-  .controller('DettaglioStanzaCtrl', function (roomsService, $routeParams, $scope) {
+  .controller('DettaglioStanzaCtrl', function (roomsService, $routeParams, $scope, $location) {
 
     var vm = this;
 
@@ -18,11 +18,25 @@ angular.module('angularjsCourseApp')
         height: 450,
         editable: true,
         header: {
+          left: 'agendaDay,agendaWeek,month',
+          center: 'title',
           right: 'today prev,next'
+        },
+        viewRender: function (view) {
+          LoadDisponibilita(view.start.toDate().toISOString(), view.end.toDate().toISOString());
+
+        }, views: {
+          agendaDay: {},
+          agendaWeek: {},
+          month: {}
+        },
+        lang: 'it',
+        dayClick: function (date, jsEvent, view) {
+          vm.titolo=date.format();
+          $('#modalBody').html(date.description);
+          //$('#eventUrl').attr('href', date.url);
+          $('#fullCalModal').modal();
         }
-        //dayClick: $scope.alertEventOnClick,
-        //eventDrop: $scope.alertOnDrop,
-        //eventResize: $scope.alertOnResize
       }
     };
 
@@ -39,23 +53,24 @@ angular.module('angularjsCourseApp')
         });
     }
 
-    function LoadDisponibilita() {
-      var date = new Date();
-      var d = date.getDate();
-      var m = date.getMonth();
-      var y = date.getFullYear();
+    function LoadDisponibilita(start, end) {
+      //var date = new Date();
+      //var d = date.getDate();
+      //var m = date.getMonth();
+      //var y = date.getFullYear();
+      console.log('loadDisp ', start, end);
 
-      var params = { inizio: new Date(y, m, 1), fine: new Date(new Date(y, m + 1, 1) - 1) };
+      var params = {inizio: start, fine: end};
       console.log(params);
       return roomsService.GetDisponibilita(id, params)
         .then(function (res) {
           console.log("elenco impegni:" + res);
-        vm.eventSources.push(res);
+          vm.eventSources[0] = res;
         });
     }
 
     LoadStanza();
-    LoadDisponibilita();
+    //LoadDisponibilita();
 
   })
 ;

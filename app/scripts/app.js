@@ -45,6 +45,11 @@ angular
         controller: 'DettaglioStanzaCtrl',
         controllerAs: 'stanza'
       })
+      .when('/modale/', {
+        templateUrl: 'views/modale.html',
+        controller: 'ModaleCtrl',
+        controllerAs: 'modale'
+      })
       .otherwise({
         redirectTo: '/'
       });
