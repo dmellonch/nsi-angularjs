@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.calendar'
+    'ui.calendar',
+    'ui.bootstrap'
   ])
   .value('baseUrl', 'https://nsi-prenota-v2.azurewebsites.net')
   .run(RunModule)

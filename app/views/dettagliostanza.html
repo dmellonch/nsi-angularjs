@@ -21,14 +21,41 @@
         <h4>{{stanza.titolo}}</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <lable for="inizio">Data Inizio </lable>
-          <input type="text" id="inizio" class="form-control" ng-model="stanza.appuntamento.inizio"> </input>
-        </div>
-        <div class="form-group">
-          <lable for="fine">Data Fine </lable>
-          <input type="text" id="fine" class="form-control" ng-model="stanza.appuntamento.fine"> </input>
-        </div>
+        <form>
+          <div class="form-group">
+            <lable class="col-md-4">Data Inizio </lable>
+            <p class="input-group col-md-4">
+              <input type="date" class="form-control"
+                 uib-datepicker-popup
+                 ng-model="stanza.prenotazione.dataInizio"
+                 is-open="status.opened"
+                 datepicker-options="dateOptions"
+                 ng-required="true"
+                 close-text="Close"/>
+            </p>
+          </div>
+          <div class="form-group">
+            <lable class="col-md-4"> </lable>
+            <uib-timepicker class="col-md-4" ng-model="stanza.prenotazione.oraInizio"></uib-timepicker>
+          </div>
+
+          <div class="form-group">
+            <lable class="col-md-4">Data Fine </lable>
+            <p class="input-group col-md-4">
+              <input type="date" class="form-control"
+                 uib-datepicker-popup
+                 ng-model="stanza.prenotazione.dataFine"
+                 is-open="status.opened"
+                 datepicker-options="dateOptions"
+                 ng-required="true" close-text="Close"
+                 />
+            </p>
+          </div>
+          <div class="form-group">
+            <lable class="col-md-4"> </lable>
+            <uib-timepicker class="col-md-4" ng-model="stanza.prenotazione.oraFine"></uib-timepicker>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>

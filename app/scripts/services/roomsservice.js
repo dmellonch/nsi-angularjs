@@ -14,6 +14,7 @@ angular.module('angularjsCourseApp')
     var vm = this;
     vm.GetStanze = GetStanze;
     vm.GetDisponibilita = GetDisponibilita;
+    vm.Prenota = Prenota;
 
     function GetStanze(id) {
       var currentUrl = '/api/Stanza'
@@ -54,11 +55,13 @@ angular.module('angularjsCourseApp')
         });
     };
 
-    function prenota(params) {
-      return $http.post(baseUrl + '/api/Prenotazione/', {params: params})
+    function Prenota(params) {
+      return $http.post(baseUrl + '/api/Prenotazione/', params)
         .then(
         console.log('fatta')
       )
+        .catch(
+        console.log('fallita'))
 
     }
 
