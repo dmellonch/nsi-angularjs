@@ -23,6 +23,16 @@ angular
   .run(RunModule)
   .config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
+    $httpProvider.interceptors.push('httpLoggingInterceptor');
+  })
+  .service('httpLoggingInterceptor', function () {
+
+    return {
+      request: function (config) {
+        console.log(config);
+        return config;
+      }
+    }
   })
   .config(function ($routeProvider) {
     $routeProvider
@@ -57,15 +67,14 @@ angular
   });
 
 
-RunModule.$inject = ['authService','$location'];
+RunModule.$inject = ['authService', '$location'];
 function RunModule(authService, $location) {
   console.log('RunModule ->', authService.getAuthenticated());
 
-  if(authService.getAuthenticated()){
+  if (authService.getAuthenticated()) {
     $location.path('/');
   }
-  else
-  {
+  else {
     $location.path('/login');
   }
 }
