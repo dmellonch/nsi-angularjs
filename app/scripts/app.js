@@ -17,7 +17,9 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.calendar',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'toastr',
+    'SignalR'
   ])
   .value('baseUrl', 'https://nsi-prenota-v2.azurewebsites.net')
   .run(RunModule)
@@ -72,8 +74,8 @@ angular
   });
 
 
-RunModule.$inject = ['authService', '$location'];
-function RunModule(authService, $location) {
+RunModule.$inject = ['authService', '$location','notification'];
+function RunModule(authService, $location, notification) {
   console.log('RunModule ->', authService.getAuthenticated());
 
   if (authService.getAuthenticated()) {
