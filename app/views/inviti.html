@@ -1,0 +1,22 @@
+<div class="row marketing" >
+  <table class="table">
+    <thead><tr>
+      <th>Stanza</th>
+      <th>Data</th>
+      <th>Organizzatore</th>
+      <th>Stato</th>
+    </tr></thead>
+    <tr ng-class="invito.Stato==1?'success':invito.Stato==2?'danger':''" ng-repeat="invito in inviti.invitati">
+    <td >{{invito.Stanza_Nome}}</td>
+    <td >{{invito.Prenotazione_Inizio | date : "M/d/yy h:mm a"}}</td>
+    <td >{{invito.Creatore_Cognome}}</td>
+    <td ng-if="invito.Stato==0">
+      <button class="btn btn-success" ng-click="inviti.accetta(invito.Id)">Accetta</button>
+      <button class="btn btn-danger" ng-click="inviti.rifiuta(invito.Id)">Rifiuta</button>
+    </td>
+      <td ng-if="invito.Stato==1">Accettato</td>
+      <td ng-if="invito.Stato==2">Rifiutato</td>
+    </tr>
+  </table>
+</div>
+
