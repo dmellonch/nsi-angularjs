@@ -23,38 +23,49 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <lable class="col-md-4">Data Inizio </lable>
+            <lable class="col-md-4">Data Inizio</lable>
             <p class="input-group col-md-4">
               <input type="date" class="form-control"
-                 uib-datepicker-popup
-                 ng-model="stanza.prenotazione.dataInizio"
-                 is-open="status.opened"
-                 datepicker-options="dateOptions"
-                 ng-required="true"
-                 close-text="Close"/>
+                     uib-datepicker-popup
+                     ng-model="stanza.prenotazione.dataInizio"
+                     is-open="status.opened"
+                     datepicker-options="dateOptions"
+                     ng-required="true"
+                     close-text="Close"/>
             </p>
           </div>
           <div class="form-group">
-            <lable class="col-md-4"> </lable>
+            <lable class="col-md-4"></lable>
             <uib-timepicker class="col-md-4" ng-model="stanza.prenotazione.oraInizio"></uib-timepicker>
           </div>
 
           <div class="form-group">
-            <lable class="col-md-4">Data Fine </lable>
+            <lable class="col-md-4">Data Fine</lable>
             <p class="input-group col-md-4">
               <input type="date" class="form-control"
-                 uib-datepicker-popup
-                 ng-model="stanza.prenotazione.dataFine"
-                 is-open="status.opened"
-                 datepicker-options="dateOptions"
-                 ng-required="true" close-text="Close"
-                 />
+                     uib-datepicker-popup
+                     ng-model="stanza.prenotazione.dataFine"
+                     is-open="status.opened"
+                     datepicker-options="dateOptions"
+                     ng-required="true" close-text="Close"
+                />
             </p>
           </div>
           <div class="form-group">
-            <lable class="col-md-4"> </lable>
+            <lable class="col-md-4"></lable>
             <uib-timepicker class="col-md-4" ng-model="stanza.prenotazione.oraFine"></uib-timepicker>
           </div>
+          <div class="form-group">
+
+            <input type="text" placeholder="Utente da invitare"
+                   ng-model="whatever"
+                   uib-typeahead="(utente.Nome + ' ' + utente.Cognome) for utente in stanza.utenti |filter:$viewValue"
+                   typeahead-on-select="stanza.invitati.push($item)"
+                   class="form-control">
+
+          </div>
+
+
         </form>
       </div>
       <div class="modal-footer">

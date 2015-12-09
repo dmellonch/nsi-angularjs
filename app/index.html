@@ -43,6 +43,7 @@
         <ul class="nav navbar-nav">
           <li ng-class="{active:navbarCtrl.currentPath()== '/'}"><a href="#/">Home</a></li>
           <li ng-class="{active:navbarCtrl.currentPath()== '/about'}"><a  ng-href="#/about">About</a></li>
+          <li ng-class="{active:navbarCtrl.currentPath()== '/inviti'}"><a  ng-href="#/inviti">Inviti</a></li>
           <li><a ng-click="doLogout()" ng-show="navbarCtrl.logged()">Logout</a></li>
           <li ng-class="{active:navbarCtrl.currentPath()== '/login'}"><a  ng-href="#/login" ng-show="!navbarCtrl.logged()">Login</a></li>
         </ul>
@@ -106,6 +107,7 @@
 <script src="scripts/controllers/ctrlnavbar.js"></script>
 <script src="scripts/controllers/dettagliostanza.js"></script>
 <script src="scripts/services/roomsservice.js"></script>
+<script src="scripts/controllers/inviti.js"></script>
 <!-- endbuild -->
 </body>
 </html>

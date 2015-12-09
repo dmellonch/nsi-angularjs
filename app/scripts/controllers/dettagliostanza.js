@@ -11,6 +11,8 @@ angular.module('angularjsCourseApp')
   .controller('DettaglioStanzaCtrl', function (roomsService, authService, $routeParams) {
 
     var vm = this;
+    vm.utenti=[];
+    vm.invitati=[];
     vm.prenotazione = {oraInizio: '',
       oraFine: '',
       dataInizio: '',
@@ -88,6 +90,11 @@ angular.module('angularjsCourseApp')
       return roomsService.GetDisponibilita(vm.stanzaId, params)
         .then(function (res) {
           console.log("elenco impegni:" + res);
+          authService.getUsers().then(function (utenti) {
+            vm.utenti=utenti;
+          }
+          );
+          console.log('lista utenti',vm.utenti);
           vm.eventSources[0] = res;
         });
     }
@@ -106,6 +113,7 @@ angular.module('angularjsCourseApp')
 
       console.log(paramInizio);
       console.log(paramFine);
+      console.log(vm.invitati);
 
 
       return roomsService.Prenota({
@@ -113,7 +121,7 @@ angular.module('angularjsCourseApp')
           StanzaId: vm.stanzaId,
           Inizio: paramInizio,
           Fine: paramFine
-        });
+        },vm.invitati);
     }
 
     LoadStanza();

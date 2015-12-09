@@ -61,6 +61,11 @@ angular
         controller: 'ModaleCtrl',
         controllerAs: 'modale'
       })
+      .when('/inviti/', {
+        templateUrl: 'views/inviti.html',
+        controller: 'InvitiCtrl',
+        controllerAs: 'inviti'
+      })
       .otherwise({
         redirectTo: '/'
       });

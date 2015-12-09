@@ -12,6 +12,7 @@ angular.module('angularjsCourseApp')
     var authenticated = false;
     var vm = this;
     vm.userData = {};
+    vm.users=[];
     this.setAuthenticated = function (isAuth) {
       //console.log('setAuthenticated');
       authenticated = isAuth;
@@ -23,6 +24,17 @@ angular.module('angularjsCourseApp')
 
     this.getUserData = function () {
       return vm.userData;
+    }
+
+    this.getUsers = function () {
+      if (!authenticated) {
+        return;
+      }
+      return $http.get(baseUrl + '/api/Utente')
+        .then(function (res) {
+          console.log('utenti trovati ',res.data);
+          return res.data;
+        })
     }
 
     this.getUser = function (cb) {

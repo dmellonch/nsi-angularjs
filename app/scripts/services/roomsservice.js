@@ -15,6 +15,9 @@ angular.module('angularjsCourseApp')
     vm.GetStanze = GetStanze;
     vm.GetDisponibilita = GetDisponibilita;
     vm.Prenota = Prenota;
+    vm.GetInviti = GetInviti;
+    vm.Accetta = Accetta;
+    vm.Rifiuta = Rifiuta;
 
     function GetStanze(id) {
       var currentUrl = '/api/Stanza'
@@ -55,13 +58,60 @@ angular.module('angularjsCourseApp')
         });
     };
 
-    function Prenota(params) {
+    function Prenota(params, users) {
       return $http.post(baseUrl + '/api/Prenotazione/', params)
         .then(
-        console.log('fatta')
-      )
-        .catch(
+        function (res) {
+          users.forEach(function (item) {
+            console.log('prenotazione ', res);
+            console.log('item ', item);
+            var invito = {
+              PrenotazioneId: res.data,
+              InvitatoId: item.Id,
+              Stato: 0
+            }
+
+            $http.post(baseUrl + '/api/Invito/', invito)
+              .then(
+              console.log('utente invitato ', invito)
+            )
+          })
+        }
+      ).
+        catch(
         console.log('fallita'))
+
+    }
+
+    function GetInviti() {
+      return $http.get(baseUrl + '/api/Invito/Ricevuti/')
+        .then(function (res) {
+          console.log("elenco inviti ricevuti:" + res);
+          return res.data;
+        });
+    };
+
+
+    function Accetta(id) {
+      return $http.post(baseUrl + '/api/Invito/'+id+'/Accetta')
+        .then(
+        function (res) {
+          console.log('invito accettato');
+        }
+      ).
+        catch(
+        console.log('errore accettazione invito'))
+
+    }
+    function Rifiuta(id) {
+      return $http.post(baseUrl + '/api/Invito/'+id+'/Rifiuta')
+        .then(
+        function (res) {
+          console.log('invito rifiutato');
+        }
+      ).
+        catch(
+        console.log('errore rifiuto invito'))
 
     }
 

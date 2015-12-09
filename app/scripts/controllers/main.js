@@ -16,29 +16,29 @@ angular.module('angularjsCourseApp')
 
     function LoadStanze() {
       console.log("stanze - authenticated:" + authService.getAuthenticated());
-      if(!authService.getAuthenticated())
+      if (!authService.getAuthenticated())
         return [];
 
       return roomsService.GetStanze()
         .then(function (res) {
-              console.log("Chiedo stanze al servizio");
-              vm.elencoStanze = res;
-              console.log(vm.elencoStanze);
-            });
+          console.log("Chiedo stanze al servizio");
+          vm.elencoStanze = res;
+          console.log(vm.elencoStanze);
+        });
 
 
     }
 
     //function LoadStanze() {
-      //  console.log("stanze - authenticated:" + authService.getAuthenticated());
-      //  if(!authService.getAuthenticated())
-      //    return [];
-      //
-      //  return $http.get(baseUrl + '/api/Stanza')
-      //    .then(function (res) {
-      //      vm.elencoStanze = res.data;
-      //      console.log(vm.elencoStanze);
-      //    });
-      //}
+    //  console.log("stanze - authenticated:" + authService.getAuthenticated());
+    //  if(!authService.getAuthenticated())
+    //    return [];
+    //
+    //  return $http.get(baseUrl + '/api/Stanza')
+    //    .then(function (res) {
+    //      vm.elencoStanze = res.data;
+    //      console.log(vm.elencoStanze);
+    //    });
+    //}
     LoadStanze();
-    });
+  });
